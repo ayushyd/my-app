@@ -1,76 +1,111 @@
-import React, {useState} from 'react'
+import React, { Component } from "react";
 
-export default function About() {
- 
-    const [myStyle, setMyStyle] = useState({
-        color: 'red',
-        backgroundColor: 'white'
-    });
-    
-    const [btnText, setBtnText] = useState("Enter Dark Mode");
-    
-    const toggleStyle = () => {
-        if (myStyle.color === 'red') {
-            setMyStyle({
-                color: 'blue',
-                backgroundColor: 'black',
-                border: '1 px soild white'
-            });
-            setBtnText("Enable Light Mode");
-        } else {
-            setMyStyle({
-                color: 'red',
-                backgroundColor: 'white'
-            });
-            setBtnText("Enable Dark Mode");
-        }
+export default class About extends Component {
+  render() {
+    // Define different styles based on the content type
+    let textAnalysisStyle = {
+      color: this.props.mode === "dark" ? "white" : "red",
+      backgroundColor: this.props.mode === "dark" ? "#333" : "#ffe6e6",
+      border: "2px solid red",
     };
-  return (
-    <div className='container' style={myStyle}>
+
+    let freeToUseStyle = {
+      color: this.props.mode === "dark" ? "white" : "green",
+      backgroundColor: this.props.mode === "dark" ? "#222" : "#e6ffe6",
+      border: "2px solid green",
+    };
+
+    let compatibilityStyle = {
+      color: this.props.mode === "dark" ? "white" : "blue",
+      backgroundColor: this.props.mode === "dark" ? "#111" : "#e6e6ff",
+      border: "2px solid blue",
+    };
+
+    return (
+      <div className="container">
         <h1>About Us</h1>
         <div className="accordion" id="accordionExample">
-        <div className="accordion-item">
+          <div className="accordion-item">
             <h2 className="accordion-header">
-            <button className="accordion-button" type="button" style = {myStyle} data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Accordion Item #1
-            </button>
+              <button
+                className="accordion-button"
+                type="button"
+                style={textAnalysisStyle}
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Analyze your text
+              </button>
             </h2>
-            <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-            <div className="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            <div
+              id="collapseOne"
+              className="accordion-collapse collapse show"
+              data-bs-parent="#accordionExample"
+            >
+              <div className="accordion-body" style={textAnalysisStyle}>
+                This project is designed to analyze text efficiently. It
+                provides various features like word count, character count, and
+                text transformations to help users process their text easily.
+              </div>
             </div>
-            </div>
-        </div>
-        <div className="accordion-item">
-            <h2 className="accordion-header">
-            <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
-            </button>
-            </h2>
-            <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div className="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-            </div>
-        </div>
-        <div className="accordion-item">
-            <h2 className="accordion-header">
-            <button className="accordion-button collapsed" type="button"style = {myStyle} data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Accordion Item #3
-            </button>
-            </h2>
-            <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div className="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-            </div>
-        </div>
-        </div>
+          </div>
 
-        <div className='container my-3'>
-            <button onClick={toggleStyle} type='button' class = 'btn btn-primary mx-2' >{btnText}</button>
+          <div className="accordion-item">
+            <h2 className="accordion-header">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                style={freeToUseStyle}
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                Free to use
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              className="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div className="accordion-body" style={freeToUseStyle}>
+                Built using modern technologies like React, this project is
+                completely free to use and provides a simple, user-friendly
+                interface for text analysis.
+              </div>
+            </div>
+          </div>
+
+          <div className="accordion-item">
+            <h2 className="accordion-header">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                style={compatibilityStyle}
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                Browser Compatibility
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              className="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div className="accordion-body" style={compatibilityStyle}>
+                This project is designed to work smoothly across all modern web
+                browsers, ensuring accessibility and usability for all users.
+              </div>
+            </div>
+          </div>
         </div>
-      
-    </div>
-  )
+      </div>
+    );
+  }
 }

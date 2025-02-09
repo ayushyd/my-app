@@ -46,16 +46,16 @@ export default function Form(props) {
         <div className="mb-3">
         <textarea className="form-control" id="myBox" value = {text} onChange={handleOnChange} rows="7"></textarea>
         </div>
-        <button className='btn btn-primary mx-2' onClick={handleUpClick}>Convert to Upper Case</button>
-        <button className='btn btn-primary mx-2' onClick={handleLoClick}>Convert to Lower Case</button>
-        <button className='btn btn-primary mx-2' onClick={handleNoClick}>Clear Text</button>
-        <button className='btn btn-primary mx-2' onClick={handleCopy}>Copy Text</button>
-        <button className='btn btn-primary mx-2' onClick={handleExtraSpace}>Remove Extra Space Text</button>
+        <button className='btn btn-primary mx-2 my-1' onClick={handleUpClick}>Convert to Upper Case</button>
+        <button className='btn btn-primary mx-2 my-1' onClick={handleLoClick}>Convert to Lower Case</button>
+        <button className='btn btn-primary mx-2 my-1' onClick={handleNoClick}>Clear Text</button>
+        <button className='btn btn-primary mx-2 my-1' onClick={handleCopy}>Copy Text</button>
+        <button className='btn btn-primary mx-2 my-1' onClick={handleExtraSpace}>Remove Extra Space Text</button>
 
         <div className='container'>
             <h1>Text Summary</h1>
-            <p>Words:{text.split(' ').length}, Character: {text.length}</p>
-            <p>{0.008 * text.split(' ').length }Minutes-Reads</p>
+            <p>Words:{text.split(' ').filter((element)=> {return element.length!==0}).length}, Character: {text.length}</p>
+            <p>{0.008 * text.split(' ').filter((element)=> {return element.length!==0}).length}.length Minutes-Reads</p>
             <h2>Preview</h2>
             <p>{text.length>0?text: "Preview Your Text Here"}</p>
         </div>
